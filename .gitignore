@@ -11,3 +11,11 @@
 *.lai
 *.la
 *.a
+Assign2/makefile~
+Assign2/main
+Assign2/.bst.c.swp
+Assign2/cscope.files
+Assign2/cscope.in.out
+Assign2/cscope.out
+Assign2/cscope.po.out
+.gitignore
