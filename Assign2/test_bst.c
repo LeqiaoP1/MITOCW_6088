@@ -3,13 +3,13 @@
 #include "bst.h"
 
 int main() {
-  /* Insert 0. */
+  /* Insert 1. */
   node_t* cur = make_tree(1);
   print_bst(cur);
   printf("\n");
   assert(find_val(1, cur) == TRUE);
 
-  /* Insert 1. */
+  /* Insert 0. */
   cur = insert(0, cur);
   assert(find_val(0, cur) == TRUE);
   print_bst(cur);
@@ -21,7 +21,7 @@ int main() {
 
   /* Print the tree. */
   print_bst(cur);
-  printf("\n");
+  printf("\n---\n");
 
   /* Insert 4. */
   cur = insert(4, cur);
@@ -30,6 +30,9 @@ int main() {
   /* Insert 3 */
   cur = insert(3, cur);
   assert(find_val(3, cur) == TRUE);
+  assert(find_val(4, cur) == TRUE);
+
+  /* Print the tree again */
   print_bst(cur);
   printf("\n");
 
