@@ -4,8 +4,11 @@
 
 int main() {
  
+  /* initilize a size 32 */
   bst_t* cur = make_tree(32);
+  printf ("size of array: %d \n", cur->size);
   init_tree(cur);
+  print_bst(cur);
 
  /* Insert 1. */
   insert(1, cur);
@@ -30,6 +33,7 @@ int main() {
 
   /* Insert 3 */
   insert(3, cur);
+  insert(2, cur);
   assert(find_val(3, cur) == TRUE);
   print_bst(cur);
   printf("\n");
