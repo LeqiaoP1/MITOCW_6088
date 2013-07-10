@@ -46,12 +46,15 @@ int main () {
 
   // ADD YOUR TESTS HERE
   int testInts[] = {-1, 2, 10, 7, 8, 9};
+
+  std::cout << "Insert:  \n";
   for (unsigned i = 0; i < sizeof(testInts)/sizeof(int); i++)
     {
       tree.insert(testInts[i]);
+      std::cout << " " << testInts[i]; 
     }
 
-  std::cout << "print: \n";
+  std::cout << "\nprint: \n";
   tree.print_inorder();
   std::cout << "\n";
 
