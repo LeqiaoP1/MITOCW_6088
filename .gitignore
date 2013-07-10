@@ -13,13 +13,11 @@
 *.a
 
 # Temporary backup files 
-*.~
+*~
 
 # Cscope files
-
 cscope.*
 
 
 # compiled executable
-
 main
