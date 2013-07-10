@@ -35,6 +35,11 @@ class BST {
 
   // prints the tree elements in the in-order traversal order
   void print_inorder();
+
+ private:
+   int  *pRootVal;
+   BST  *pLeftSubBST;
+   BST  *pRightSubBST;
   
 };
 

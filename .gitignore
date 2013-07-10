@@ -18,6 +18,9 @@
 # Cscope files
 cscope.*
 
-
 # compiled executable
 main
+
+# Valgrind logfiles
+*.log
+
