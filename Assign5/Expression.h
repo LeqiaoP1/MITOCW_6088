@@ -1,3 +1,4 @@
+
 /*
  * 6.088 IAP 2010  
  * Assignment #5: Inheritance and Polymorphism
@@ -9,8 +10,7 @@
 #ifndef EXPRESSION
 #define EXPRESSION
 
-#include <cstdlib>
-#include <iostream>
+#include <string>
 
 /*
  * Expression
@@ -18,7 +18,8 @@
 class Expression {
 
  public: 
-  virtual ~Expression() {}
+  //dtor
+  virtual ~Expression(){}
   
   // Returns the result of evaluating this expression.
   virtual float eval() const = 0;
@@ -28,72 +29,36 @@ class Expression {
 };
 
 
-class ConstExpr : public Expression {
-public:
-	ConstExpr():m_val(0.0)	// ctor
-	{
-	}
+// for constant node
+class NumLeaf : public Expression {
+ public:
+  //ctor
+  NumLeaf(std::string input);
 
-	~ConstExpr()	// dtor
-	{
-	}
+  //dtor
+  ~NumLeaf();
 
-	void print( ) const
-	{
-		std::cout << m_val;
-	}
+  virtual void print( ) const;
 
-	float eval( ) const 
-	{
-		return m_val;
-	}
+  virtual float eval( ) const;
 
-private:
-	float m_val;
-
+ private:
+  float m_val;
 };
 
 
-class BinaryExpr : public Expression {
-	public:
-		BinaryExpr( std::string &input )
-		{
-			/*std::size_t foundPos;
-			if (foundPos = input.find("+"))
-			*/
-		}
 
-		// virtual implementation
-		float eval() const 
-		{
-			// no checking at unusual cases
-			if (op.compare("+") == 0)
-				return ( lhs->eval() + rhs->eval() );
+class InfixArithExpr : public Expression {
+ public:
+  InfixArithExpr( std::string input );
 
-			if (op.compare("-") == 0)
-				return ( lhs->eval() - rhs->eval() );
+  virtual float eval() const;
+	
+  virtual void print() const;
 
-			if (op.compare("*") == 0)
-				return ( lhs->eval() * rhs->eval() );
-
-			if (op.compare("/") == 0)
-				return ( lhs->eval() / rhs->eval() );
-
-			return 0.0;
-		}
-
-		void print() const
-		{
-			lhs->print();
-			std::cout << " " << op << " ";
-			rhs->print();
-		}
-
-	private:
-		std::string op;
-		Expression	*lhs, *rhs;
+ private:
+  std::string op;
+  Expression	*lhs, *rhs;
 };
-
-
 
 #endif  // EXPRESSION
