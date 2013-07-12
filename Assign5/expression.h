@@ -7,11 +7,12 @@
  * Header file for the abstract base class Expression
  */
 
-#ifndef EXPRESSION
-#define EXPRESSION
+#ifndef _EXPRESSION_
+#define _EXPRESSION_
 
 #include <string>
 
+class Scanner;
 /*
  * Expression
  */
@@ -33,7 +34,7 @@ class Expression {
 class NumLeaf : public Expression {
  public:
   //ctor
-  NumLeaf(std::string input);
+  NumLeaf(Scanner& sc);
 
   //dtor
   ~NumLeaf();
@@ -47,10 +48,25 @@ class NumLeaf : public Expression {
 };
 
 
+class Term : public Expression {
+ public:
+  Term (Scanner& sc);
+  ~Term();
+
+  virtual float eval() const;
+  virtual void print() const;
+
+ private:
+  bool hasNegSign;  // "-" Term
+  bool hasParenthese; // "(" InfixArithExpression ")"
+  Expression  *pExpr;
+};
 
 class InfixArithExpr : public Expression {
  public:
-  InfixArithExpr( std::string input );
+  InfixArithExpr(Scanner& sc);
+
+  ~InfixArithExpr();
 
   virtual float eval() const;
 	
@@ -58,7 +74,8 @@ class InfixArithExpr : public Expression {
 
  private:
   std::string op;
-  Expression	*lhs, *rhs;
+  Expression *pTerm;
+  Expression *pExpr;
 };
 
 #endif  // EXPRESSION

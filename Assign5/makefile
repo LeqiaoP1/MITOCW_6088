@@ -7,7 +7,7 @@ CFLAGS = -Wall -g
 
 ## for c++ compiler
 # compilation flags
-CXXFLAGS = -fPIC -Wall -g
+CXXFLAGS = -fPIC -Wall -std=c++0x -g
 
 ## for the preprocessor, 
 # define any directories for header files other than /usr/include
@@ -37,11 +37,13 @@ DCHECK_PTR = --tool=exp-ptrcheck --enable-sg-checks=yes --log-file=$@.ptr.log
 
 ##-----------------------------------------------------------------
 
-SRCS = expression.cc test_expression.cc
+#SRCS = expression.cc test_expression.cc
+SRCS = scanner.cc expression.cc test_expression.cc
 
 ## Replacement marco:  $(nameset:string1=string2)
 ## for each name in nameset, replace contained string1 by string2
 OBJS = $(SRCS:.cc=.o)
+
 
 EXE = main
 
