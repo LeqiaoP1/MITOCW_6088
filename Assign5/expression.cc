@@ -58,7 +58,7 @@ Term::Term(Scanner& sc)
 Term::~Term()
 {
   if (pExpr)
-    free(pExpr);
+    delete pExpr;
 
   pExpr = NULL;
 }
@@ -137,10 +137,10 @@ InfixArithExpr::InfixArithExpr(Scanner& sc )
 InfixArithExpr::~InfixArithExpr()
 {
   if (pTerm)
-    free(pTerm);
+    delete pTerm;
   
   if (pExpr)
-    free(pExpr);
+    delete pExpr;
 
   pTerm = NULL;
   pExpr = NULL;
